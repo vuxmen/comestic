@@ -1,0 +1,16 @@
+.list {
+  @include reset-list;
+  display: flex;
+
+  &--vertical {
+    flex-direction: column;
+  }
+}
+
+.pd-0 {
+  padding: 0;
+}
+
+.mg-0 {
+  margin: 0;
+}

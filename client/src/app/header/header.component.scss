@@ -1,0 +1,30 @@
+@import "../../scss//styles.scss";
+
+.header {
+    background-color: getColor($colors, "bg-01");
+}
+
+.nav-order {
+    order: 2;
+
+    @media (max-width: getBreakPointMax($mediaBreakPoints, "md")) {
+        order: 4;
+    }
+}
+
+.search-order {
+    order: 3;
+
+    @media (max-width: getBreakPointMax($mediaBreakPoints, "md")) {
+        order: 2;
+    }
+}
+
+.mobile-bar-order {
+    order: 4;
+    display: none;
+    @media (max-width: getBreakPointMax($mediaBreakPoints, "md")) {
+        order: 3;
+        display: block;
+    }
+}

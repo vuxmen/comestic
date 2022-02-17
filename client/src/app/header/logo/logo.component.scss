@@ -1,0 +1,22 @@
+@import "../../../scss/styles.scss";
+
+.logo {
+    @include getContainerStyle("header", "bg-01", "text-01");
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2rem;
+
+    &__icon {
+        @include getLogoIconWidth("xs");
+    }
+
+    @each $breakPointName, $breakPointValue in $mediaBreakPoints {
+        @media (min-width: getBreakPoint($mediaBreakPoints, $breakPointName)) {
+            &__icon--#{$breakPointName} {
+                @include getLogoIconWidth($breakPointName);
+            }
+        }
+    }
+}

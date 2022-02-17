@@ -1,0 +1,12 @@
+@import "../../../scss//styles.scss";
+
+.mobile-bar {
+  height: 100%;
+  @include center-element;
+  &__icon {
+      color: white;
+      transform: scale(1.5);
+      cursor: pointer;
+  }
+
+}

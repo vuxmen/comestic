@@ -1,0 +1,24 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "setting/variables";
+@import "setting/mixins";
+@import "setting/functions";
+
+@import "base/animation";
+@import "base/fonts";
+@import "base/global";
+@import "base/reset";
+@import "base/utils";
+
+@import "layout/footer";
+@import "layout/forms";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/sidebar";
+
+@import "pages/about";
+@import "pages/contact";
+@import "pages/home";
+
+@import "components/buttons";

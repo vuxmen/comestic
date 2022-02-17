@@ -1,0 +1,92 @@
+@use "sass:math";
+
+@function checkKeyExistInList($list, $key)  {
+    @if not index($list, $key) {
+        @error "#{$key} is not valid value. Expected one of #{$list}";
+    }
+
+    @return true;
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return  math.div($number, $number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+@function unitlessToPixel($value) {
+  @return "#{$value}px";
+}
+
+@function getColor($colors, $colorKey) {
+    $keyList: map-keys($colors);
+    $check: checkValueExistInList($keyList, $colorKey);
+
+    @if check {
+        @return map-get($colors, $colorKey);
+    }
+}
+
+@function getHeight($heights, $heightKey) {
+    $keyList: map-keys($heights);
+    $check: checkValueExistInList($keyList, $heightKey);
+
+    @if check {
+        @return map-get($heights, $heightKey);
+    }
+}
+
+@function getTextSize($fontSizes, $fontKey) {
+    $keyList: map-keys($fontSizes);
+    $check: checkValueExistInList($keyList, $fontKey);
+
+    @if check {
+        @return map-get($fontSizes, $fontKey);
+    }
+}
+
+@function getLogoIconWidth($logo_icons_width, $modifier) {
+    $logo_icons_keys: map-keys($logo_icons_width);
+    $check: checkValueExistInList($logo_icons_keys, $modifier);
+
+    @if check {
+        @return map-get($logo_icons_width, $modifier);
+    }
+}
+
+@function getBreakPoint($mediaBreakPoints, $breakPointName) {
+    $breakPoint_keys: map-keys($mediaBreakPoints);
+    $check: checkValueExistInList($breakPoint_keys, $breakPointName);
+
+    @if check {
+        @return map-get($mediaBreakPoints, $breakPointName);
+    }
+}
+
+@function getBreakPointMax($mediaBreakPoints, $breakPointName) {
+    $breakPoint_keys: map-keys($mediaBreakPoints);
+    $check: checkValueExistInList($breakPoint_keys, $breakPointName);
+
+    @if check {
+        $breakPointValue: map-get($mediaBreakPoints, $breakPointName);
+        $stripBreakPointValue: strip-unit($breakPointValue);
+        @return unitlessToPixel($stripBreakPointValue - 1);
+    }
+}
+
+@function getFluidTypographyParameters($element_map) {
+  $breakPoint_min_map: map-get($element_map, "breakPoint-min");
+  $breakPoint_max_map: map-get($element_map, "breakPoint-max");
+  $minFontSize: map-get($breakPoint_min_map, "fontSize");
+  $maxFontSize: map-get($breakPoint_max_map, "fontSize");
+  $minBreakPointSize: map-get($breakPoint_min_map, "screenSize");
+  $maxBreakPointSize: map-get($breakPoint_max_map, "screenSize");
+
+  @return
+    $minFontSize,
+    $maxFontSize,
+    $minBreakPointSize,
+    $maxBreakPointSize
+};

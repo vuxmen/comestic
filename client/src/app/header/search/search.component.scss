@@ -1,0 +1,12 @@
+@import "../../../scss/styles.scss";
+
+.header {
+    &__search {
+        @include getContainerStyle("header", "bg-01", "text-01");
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 2rem;
+    }
+}

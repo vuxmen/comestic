@@ -1,0 +1,6 @@
+  <div class="row mg-0 header">
+    <logo class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-8 pd-0"></logo>
+    <navigation [display] = "navigationDisplay" class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12 pd-0 nav-order"></navigation>
+    <search class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-2 pd-0 search-order"></search>
+    <mobile-bar [navigationDisplay] = "navigationDisplay" (toggleNavBarEvent) = "receiveMessage($event)"  class="col-sm-2 col-2 mobile-bar-order"></mobile-bar>
+  </div>

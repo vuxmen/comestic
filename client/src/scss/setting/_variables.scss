@@ -1,0 +1,11 @@
+$colors: (bg-01: #21243d, bg-02: #ffd17e, text-01: #fff, text-02: #111);
+
+$heights: (header: 5.5rem);
+
+$mediaBreakPoints: (sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+
+$logo_icons_width: (xs: 8rem, sm: 9rem, md: 10rem, lg: 11rem, xl: 12rem);
+
+$fluidTypoGraphies: (header: (breakPoint-min: (fontSize: 1rem, screenSize: map-get($mediaBreakPoints, "sm")), breakPoint-max: (fontSize: 1.2rem, screenSize: map-get($mediaBreakPoints, "xl"))));
+
+$listTypographyElements: map-keys($fluidTypoGraphies);

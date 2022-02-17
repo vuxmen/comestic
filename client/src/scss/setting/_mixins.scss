@@ -1,0 +1,42 @@
+@use "sass:list";
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin getContainerStyle($elementName, $elementBgColor, $elementTextColor) {
+    height: getHeight($heights, $elementName);
+    background-color: getColor($colors, $elementBgColor);
+    color: getColor($colors, $elementTextColor);
+}
+
+@mixin center-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin getLogoIconWidth($size) {
+    width: getLogoIconWidth($logo_icons_width, $size);
+}
+
+@mixin getFluidTypography($element) {
+    $checkElementInTypoGraphyList: checkKeyExistInList($listTypographyElements, $element);
+    @debug $checkElementInTypoGraphyList;
+    @if check {
+        $element_map: map-get($fluidTypoGraphies, $element);
+        $fluidTypographyParameters: getFluidTypographyParameters($element_map);
+
+        $minSize: list.nth($fluidTypographyParameters, 1);
+        $minViewPort: list.nth($fluidTypographyParameters, 3);
+
+        $stripMinSize: strip-unit($minSize);
+        $stripMaxSize: strip-unit(list.nth($fluidTypographyParameters, 2));
+        $stripMinViewPort: strip-unit($minViewPort);
+        $stripMaxViewPort: strip-unit(list.nth($fluidTypographyParameters, 4));
+
+        font-size: calc(#{$minSize} + (#{$stripMaxSize} - #{$stripMinSize}) * ((100vw - #{$minViewPort}) / (#{$stripMaxViewPort} - #{$stripMinViewPort})));
+    }
+}
